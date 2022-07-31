@@ -1,0 +1,52 @@
+main {
+  min-height: 90vh;
+  background-image: url(pic.jpg);
+}
+#productDetails {
+  background-color: #ecf0f1;
+}
+footer {
+  background-color: #ecf0f1;
+}
+
+h3 {
+  padding: 0.5rem 0;
+  margin-top: 1rem;
+  display: inline-block;
+  font-size: 1rem;
+}
+h2 {
+  font-size: 1.5rem;
+  padding: 0.5rem 0;
+}
+h1 {
+  font-size: 2.8rem;
+  padding: 1rem 0;
+  margin: 1rem;
+  margin-left: -0.7rem;
+}
+
+.carousel {
+  height: 15rem;
+}
+.carousel-item-next,
+.carousel-item-prev,
+.carousel-item.active {
+  display: flex;
+}
+
+.carousel img {
+  height: 10rem;
+  padding: 30px;
+  margin: 40px;
+  border-radius: 50%;
+  /* margin-left: auto;
+  margin-right: auto; */
+}
+.carousel a {
+  margin: 0 auto;
+}
+#cardImg {
+  width: "50vw";
+  height: "30vh";
+}
