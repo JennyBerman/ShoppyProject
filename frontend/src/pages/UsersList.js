@@ -26,7 +26,6 @@ const UsersList = () => {
   useEffect(() => {
     if (userInfo && userInfo.isAdmin) {
       dispatch(ListUsers());
-      console.log(users);
     } else {
       navigate("/login");
     }

@@ -25,7 +25,6 @@ const importData = async () => {
 
     await Product.insertMany(sampleProducts);
 
-    console.log(`Data imported`);
     process.exit;
   } catch (error) {
     console.error(`${error}`);
@@ -39,7 +38,6 @@ const destroyData = async () => {
     await Product.deleteMany();
     await User.deleteMany();
 
-    console.log(`Data destroyed`);
     process.exit;
   } catch (error) {
     console.error(`${error}`);

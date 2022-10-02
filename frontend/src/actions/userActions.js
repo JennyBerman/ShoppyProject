@@ -11,13 +11,13 @@ export const login = (email, password) => async (dispatch) => {
         "Content-Type": "application/json",
       },
     };
-    console.log("BEFORE LOGIN" + email + " " + password);
+
     const { data } = await axios.post(
       "/api/users/login",
       { email, password },
       config
     );
-    console.log("SUCCESS LOGIN");
+
     dispatch({
       type: "USER_LOGIN_SUCCESS",
       payload: data,

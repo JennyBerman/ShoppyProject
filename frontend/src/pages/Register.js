@@ -6,6 +6,7 @@ import Message from "../components/Message";
 import FormContainer from "../components/FormContainer";
 import { register } from "../actions/userActions";
 import Loading from "../components/Loading";
+import { Badge } from "react-bootstrap";
 
 const Register = ({ location }) => {
   const [name, setName] = useState("");
@@ -46,7 +47,9 @@ const Register = ({ location }) => {
       {loading && <Loading />}
       <Form onSubmit={submitHandler}>
         <Form.Group controlId="name">
-          <Form.Label>Name</Form.Label>
+          <Form.Label>
+            Name<Badge bg="secondary">Must be at least 2 characters long</Badge>
+          </Form.Label>
           <FloatingLabel
             controlId="floatingInput"
             label="Enter name"
@@ -62,7 +65,10 @@ const Register = ({ location }) => {
         </Form.Group>
 
         <Form.Group controlId="email">
-          <Form.Label>Email Address</Form.Label>
+          <Form.Label>
+            Email Address
+            <Badge bg="secondary">Must be a valid email address</Badge>
+          </Form.Label>
           <FloatingLabel
             controlId="floatingInput"
             label="Enter email"
@@ -78,7 +84,10 @@ const Register = ({ location }) => {
         </Form.Group>
 
         <Form.Group controlId="password">
-          <Form.Label>Password</Form.Label>
+          <Form.Label>
+            Password
+            <Badge bg="secondary">Must be at least 6 characters long</Badge>
+          </Form.Label>
           <FloatingLabel
             controlId="floatingInput"
             label="Enter password"

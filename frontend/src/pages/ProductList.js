@@ -38,7 +38,7 @@ const ProductList = () => {
   } = productCreate;
 
   const deleteHandler = (id) => {
-    if (window.confirm("Are you sure")) {
+    if (window.confirm("Are you sure?")) {
       dispatch(deleteProduct(id));
     }
   };

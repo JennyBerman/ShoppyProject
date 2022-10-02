@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   listProductDetails,
   createProductReview,
+  deleteProductReview,
 } from "../actions/productActions";
 import Message from "../components/Message";
 import Loading from "../components/Loading";
@@ -23,7 +24,7 @@ import Loading from "../components/Loading";
 const Product = () => {
   const [qty, setQty] = useState(1);
   const [rating, setRating] = useState(0);
-  const [comment, setComment] = useState("");
+  const [comment, setComment] = useState([]);
 
   const { id } = useParams();
 
@@ -39,38 +40,75 @@ const Product = () => {
     error: errorProductReview,
   } = productReviewCreate;
 
+  ///////
+  const productReviewDelete = useSelector((state) => state.productReviewDelete);
+  const {
+    success: successProductReviewDelete,
+    loading: loadingProductReviewDelete,
+    error: errorProductReviewDelete,
+  } = productReviewDelete;
+
+  const deleteHandler = (id) => {
+    if (window.confirm("Are you sure?")) {
+      dispatch(deleteProductReview(id));
+    }
+  };
+  ///////
+
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
   const navigate = useNavigate();
 
   const addToCartHandler = () => {
-    navigate(`/cart/${id}?qty=${qty}`);
+    if (userInfo) {
+      navigate(`/cart/${id}?qty=${qty}`);
+    } else {
+      navigate("/signin");
+    }
   };
 
   const addToFavouritesHandler = () => {
-    navigate(`/favourites/${id}?`);
+    if (userInfo) {
+      navigate(`/favourites/${id}?`);
+    } else {
+      navigate("/signin");
+    }
   };
 
   const submitHandler = (e) => {
     e.preventDefault();
+
     dispatch(
       createProductReview(id, {
         rating,
         comment,
       })
     );
+    setComment(comment);
+    setRating(rating);
   };
 
   useEffect(() => {
+    dispatch(listProductDetails(id));
+
     if (!product._id || product._id !== id) {
       dispatch(listProductDetails(id));
       dispatch({ type: "PRODUCT_CREATE_REVIEW_RESET" });
     }
-  }, [dispatch, id, product._id, successProductReview]);
+  }, [
+    dispatch,
+    id,
+    product._id,
+    product.reviews,
+    rating,
+    comment,
+    successProductReview,
+    // successProductReviewDelete,
+  ]);
   return (
     <>
-      <Link className="btn btn-dark my-3" to="/">
+      <Link className="btn btn-dark my-3" to="/ourProducts">
         Back
       </Link>
       {loading ? (
@@ -186,17 +224,25 @@ const Product = () => {
             <Col md={6}>
               <h2>Reviews</h2>
               {product.reviews.length === 0 && <Message>No Reviews</Message>}
-              <ListGroup variant="flush">
+              <ListGroup id="AllReviews" variant="flush">
                 {product.reviews.map((review) => (
                   <ListGroup.Item key={review._id}>
                     <strong>{review.name}</strong>
                     <Rating value={review.rating} />
                     <p>{review.createdAt.substring(0, 10)}</p>
-                    <p>{review.comment}</p>
+                    <p>{review.comment} </p>
+                    {review.user === userInfo._id && (
+                      <Button onClick={() => deleteHandler(product._id)}>
+                        <i className="fas fa-trash"></i>
+                      </Button>
+                    )}
+                    {/* <p>{review.user}</p>
+                    <p>{userInfo._id}</p> */}
                   </ListGroup.Item>
                 ))}
+
+                <h2>Write a Customer Review</h2>
                 <ListGroup.Item>
-                  <h2>Write a Customer Review</h2>
                   {successProductReview && (
                     <Message variant="success">
                       Review submitted successfully

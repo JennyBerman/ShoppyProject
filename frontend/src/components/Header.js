@@ -35,14 +35,19 @@ const Header = () => {
                   <i className="fa-solid fa-magnifying-glass px-2"></i>
                 </Nav.Link>
               </LinkContainer>
-              <LinkContainer to="/favourites/:id">
-                <Nav.Link>Favourites</Nav.Link>
-              </LinkContainer>
-              <LinkContainer to="/cart">
-                <Nav.Link>
-                  <i className="fa-solid fa-basket-shopping px-2"></i>My cart
-                </Nav.Link>
-              </LinkContainer>
+              {userInfo && (
+                <LinkContainer to="/favourites/:id">
+                  <Nav.Link>Favourites</Nav.Link>
+                </LinkContainer>
+              )}
+              {userInfo && (
+                <LinkContainer to="/cart">
+                  <Nav.Link>
+                    <i className="fa-solid fa-basket-shopping px-2"></i>My cart
+                  </Nav.Link>
+                </LinkContainer>
+              )}
+
               {userInfo ? (
                 <NavDropdown title={userInfo.name} id="username">
                   <LinkContainer to="/profile">

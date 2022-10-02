@@ -27,18 +27,6 @@ const getProductById = asyncHandler(async (req, res) => {
   }
 });
 
-const deleteProduct = asyncHandler(async (req, res) => {
-  const product = await Product.findById(req.params.id);
-
-  if (product) {
-    await product.remove();
-    res.json({ message: "Product removed" });
-  } else {
-    res.status(404);
-    throw new Error("Product not found");
-  }
-});
-
 const createProduct = asyncHandler(async (req, res) => {
   const product = new Product({
     name: "Sample name",
@@ -55,7 +43,17 @@ const createProduct = asyncHandler(async (req, res) => {
   const createdProduct = await product.save();
   res.status(201).json(createdProduct);
 });
+const deleteProduct = asyncHandler(async (req, res) => {
+  const product = await Product.findById(req.params.id);
 
+  if (product) {
+    await product.remove();
+    res.status.json({ message: "Product removed" });
+  } else {
+    res.status(404);
+    throw new Error("Product not found");
+  }
+});
 const updateProduct = asyncHandler(async (req, res) => {
   const { name, price, description, image, brand, category, countInStock } =
     req.body;
@@ -79,6 +77,27 @@ const updateProduct = asyncHandler(async (req, res) => {
   }
 });
 
+///////
+const deleteProductReview = asyncHandler(async (req, res) => {
+  const product = await Product.findById(req.params.id);
+
+  if (product) {
+    const alreadyReviewed = product.reviews.find(
+      (r) => r.user.toString() === req.user._id.toString()
+    );
+
+    if (alreadyReviewed) {
+      await alreadyReviewed.remove();
+      await product.save();
+      res.status(201).json({ message: "Review Deleted" });
+    } else {
+      res.status(404);
+      throw new Error("Product Review not found");
+    }
+  }
+});
+//////
+
 const createProductReview = asyncHandler(async (req, res) => {
   const { rating, comment } = req.body;
 
@@ -90,8 +109,13 @@ const createProductReview = asyncHandler(async (req, res) => {
     );
 
     if (alreadyReviewed) {
-      res.status(400);
-      throw new Error("Product already reviewed");
+      alreadyReviewed.remove();
+      const review = {
+        name: req.user.name,
+        rating: Number(rating),
+        comment,
+        user: req.user._id,
+      };
     }
 
     const review = {
@@ -131,4 +155,5 @@ export {
   updateProduct,
   createProductReview,
   getTopProducts,
+  deleteProductReview,
 };

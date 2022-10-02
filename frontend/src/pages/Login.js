@@ -26,23 +26,20 @@ const Login = ({ location }) => {
 
   //Google
   const handleCallbackResponse = (response) => {
-    console.log("JWT  ID Token:" + response.credential);
     let userObject = jwt_decode(response.credential);
-    console.log(userObject);
+
     setUser(userObject);
-    console.log(userObject.email);
+
     dispatch(register(userObject.name, userObject.email, userObject.aud));
     dispatch(login(userObject.email, userObject.aud));
   };
 
   //Google
   const [user, setUser] = useState({});
-
   useEffect(() => {
     /*global google*/
     google.accounts.id.initialize({
-      client_id:
-        "209733661132-js439pr1oul8n68pmfkbjo9g6usee3ar.apps.googleusercontent.com",
+      client_id: process.env.REACT_APP_CLIENT_ID,
       callback: handleCallbackResponse,
     });
     google.accounts.id.renderButton(document.getElementById("signInDiv"), {

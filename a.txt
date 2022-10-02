@@ -1,0 +1,39 @@
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyZDUzOTIxMjVmYzdhYTRhNzM0YjgyMSIsImlhdCI6MTY1ODY2MDgxNiwiZXhwIjoxNjYxMjUyODE2fQ.ybcDoVVsVU7ilCfMHbnD3zZnNkBg800lv01GG0Rbpvw
+
+Google
+
+209733661132-js439pr1oul8n68pmfkbjo9g6usee3ar.apps.googleusercontent.com
+secret
+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
+
+
+eyJhbGciOiJSUzI1NiIsImtpZCI6IjA3NGI5MjhlZGY2NWE2ZjQ3MGM3MWIwYTI0N2JkMGY3YTRjOWNjYmMiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJodHRwczovL2FjY291bnRzLmdvb2dsZS5jb20iLCJuYmYiOjE2NTkwMTE0NzIsImF1ZCI6IjIwOTczMzY2MTEzMi1qczQzOXByMW91bDhuNjhwbWZrYmpvOWc2dXNlZTNhci5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsInN1YiI6IjExMjY3OTY0NTc1MjA0MDg0NDEzNiIsImVtYWlsIjoiamVubnl5MjlAZ21haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImF6cCI6IjIwOTczMzY2MTEzMi1qczQzOXByMW91bDhuNjhwbWZrYmpvOWc2dXNlZTNhci5hcHBzLmdvb2dsZXVzZXJjb250ZW50LmNvbSIsIm5hbWUiOiJqZW5ueSB5IiwicGljdHVyZSI6Imh0dHBzOi8vbGgzLmdvb2dsZXVzZXJjb250ZW50LmNvbS9hL0FJdGJ2bWxQVE4yZWdHaDBUVWdMMDBOLU9EbjJGYldtTVc0a3RyYURaSEtHPXM5Ni1jIiwiZ2l2ZW5fbmFtZSI6Implbm55IiwiZmFtaWx5X25hbWUiOiJ5IiwiaWF0IjoxNjU5MDExNzcyLCJleHAiOjE2NTkwMTUzNzIsImp0aSI6Ijk4OWMwNzUxOGNmZjYwMTY2OGU3NTYxOWVmOTM1MmQwOWI3MDc5M2MifQ.W64yZSTiRN0yBKru2BXUSn-gZwRTvM9p_kMmi933m2TVQgIjrY-NEdOLVSoM8vks40RXg0beqBr332ZkYQImHjhMZ25zaVaqLrnFv5I8-zt4G0JwiCBoRGR6moPq4kDvH0lbZm3OaqOsAAPc-K31ageC2JhfIarWGrUaLbUuT4BNEArNTITLokg3J_efS1Aex9IeLMhvjPQI4mfMuKFILj_JLTXb1qoBhY6tEZTaOj41wZ_W5G4_Hk0UqNiZb4w4lXBzkGvElywH9evAQAVVQvvL6lRFnepXgzV1lmuO-ZiFpvUnMuKEu9JSEwBkyoPoC6FfnRmCW68e9gqSwvSrIA
+
+
+
+{
+        "countInstock": 0,
+        "_id": "62e0e797a4341dd9e0232fdc",
+        "user": "62e0e797a4341dd9e0232fd8",
+        "name": "Airpods Wireless Bluetooth Headphones",
+        "image": "/images/airpods.jpg",
+        "brand": "Apple",
+        "category": "Electronics",
+        "description": "Bluetooth technology lets you connect it with compatible devices wirelessly High-quality AAC audio offers immersive listening experience Built-in microphone allows you to take calls while working",
+        "rating": 2,
+        "numReviews": 1,
+        "price": 89.99,
+        "countIntock": 0,
+        "reviews": [
+            {
+                "name": "refreshed",
+                "rating": 2,
+                "comment": "sds",
+                "user": "62e0e797a4341dd9e0232fd9",
+                "_id": "62e113a8dbea04e90bfdeefb",
+                "createdAt": "2022-07-27T10:30:00.089Z",
+                "updatedAt": "2022-07-27T10:30:00.089Z"
+            }
+        ],
+        "__v": 1
+    },

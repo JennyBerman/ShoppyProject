@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
+import Joi from "joi";
 
 const userSchema = mongoose.Schema(
   {
@@ -42,6 +43,16 @@ userSchema.pre("save", async function (next) {
   next();
 });
 
+function validateUser(user) {
+  const schema = Joi.object({
+    name: Joi.string().min(2).max(255).required(),
+    email: Joi.string().min(6).max(255).email().required(),
+    password: Joi.string().min(6).max(1024).required(),
+    confirmPassword: Joi.ref("password"),
+  });
+  return schema.validate(user);
+}
+
 const User = mongoose.model("User", userSchema);
 
-export default User;
+export { User, validateUser };

@@ -8,12 +8,9 @@ import { useNavigate } from "react-router-dom";
 const Home = () => {
   const navigate = useNavigate();
 
-  const onClickHandler = () => {
-    navigate(`/about`);
-  };
-  const onClickProductHandler = () => {
-    navigate(`/ourproducts`);
-  };
+  // const onClickProductHandler = () => {
+  //   navigate(`/ourproducts`);
+  // };
   // const id = useParams();
   // const keyword = id.keyword;
 
@@ -28,7 +25,7 @@ const Home = () => {
           <Row>
             <Col>
               <h2>It's time to become a better you</h2>
-              <Button variant="outline-dark" onClick={onClickHandler}>
+              <Button variant="outline-dark" onClick={() => navigate("/about")}>
                 Read more about us
               </Button>
               <br></br>
@@ -49,7 +46,10 @@ const Home = () => {
               <Card.Body>
                 <Card.Title>Collagen</Card.Title>
 
-                <Button variant="primary" onClick={onClickProductHandler}>
+                <Button
+                  variant="primary"
+                  onClick={() => navigate(`/ourproducts`)}
+                >
                   Go to products
                 </Button>
               </Card.Body>
@@ -61,7 +61,10 @@ const Home = () => {
               <Card.Body>
                 <Card.Title>Dumbells</Card.Title>
 
-                <Button variant="primary" onClick={onClickProductHandler}>
+                <Button
+                  variant="primary"
+                  onClick={() => navigate(`/ourproducts`)}
+                >
                   Go to products
                 </Button>
               </Card.Body>
@@ -73,7 +76,10 @@ const Home = () => {
               <Card.Body>
                 <Card.Title>TRX</Card.Title>
 
-                <Button variant="primary" onClick={onClickProductHandler}>
+                <Button
+                  variant="primary"
+                  onClick={() => navigate(`/ourproducts`)}
+                >
                   Go to Products
                 </Button>
               </Card.Body>

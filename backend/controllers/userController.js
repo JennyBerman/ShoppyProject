@@ -1,6 +1,6 @@
 import asyncHandler from "express-async-handler";
 import generateToken from "../utils/generateToken.js";
-import User from "../models/userModel.js";
+import { User, validateUser } from "../models/userModel.js";
 
 const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
@@ -23,7 +23,19 @@ const authUser = asyncHandler(async (req, res) => {
 
 const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
-
+  /*Before*/
+  const { error } = validateUser(req.body);
+  if (error) {
+    // res.status(400).send(error.details[0].message);
+    // return res.send(error.details);
+    res.status(422).json({
+      status: "error",
+      message: "Your data is incorrect, please try again.",
+      data: req.body,
+    });
+    // return res.send(error.details);
+  }
+  /*After*/
   const userExists = await User.findOne({ email });
 
   if (userExists) {
